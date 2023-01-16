@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>LINE Retail Society</title>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PW7HPDW');</script>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <link href="assets/img/favicom.ico" rel="icon">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/ttb.css" rel="stylesheet">
+  <link href="assets/css/css.css" rel="stylesheet">
+  <link href="assets/css/w3.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://static.line-scdn.net/liff/edge/versions/2.12.0/sdk.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"></script>
+</head>
+
+<body style="background-color: #f2f2f2;">
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW7HPDW"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <div id="isLoggedIn" style="color:#fff;"></div>
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+      <h1 class="logo mr-auto"><a href="index.html"><span>LINE</span> Retail Society</a></h1>
+    </div>
+  </header>
+
+  <main id="main">
+    <div style="text-align: center;margin-top:50px;"><img src="./img/bg-Campaign.jpg" style="width:90%;max-width: 400px;"></div>
+    <div class="container" style="text-align: center">
+      <div id="loading" style="margin-top:30px;"><img src="./img/loading1.gif" style="width:50px;"></div>
+      <div id="NoService" style="display: none;margin-top:20px;">
+        <div class="btn-t8" style="color:#ff0000; line-height: 1.2; font-weight: 600;">คุณไม่ได้รับสิทธิ์ในการเข้าถึงข้อมูลนี้<br>กรุณาบอกเราว่าคุณมีความจำเป็นอย่างไร<br>
+          <a href="mailto:suvit.cha@ttbbank.com&subject=แจ้งขอใช้งาน BBD Champion League&body=กรุณาระบุเหตุผลที่ต้องการใช้งาน ชื่อ-นามสกุล และรหัสพนักงาน" style="text-decoration: none;"><div class="btn-t2" style="margin-top:15px;;">แจ้งเหตุผลเข้าใช้ระบบงาน</div></a>
+        </div>
+      </div>
+      <div id="OldSurvey" style="display: none;margin-top:30px;">
+        <div style="margin:auto;">
+          <div class="btn-t2" onclick="location.href='home.html'" style="margin-bottom: 7px;padding:10px 90px;color:#fff;background-color: #0056ff; border:2px solid #268cf9;">คลิกเพื่อเข้าสู่<br>ระบบงาน Seller Campaign</div>
+          <div class="clr"></div>
+          <div style="width:260px; margin:10px auto;">
+
+            <div class="ScoreGame5" onclick="location.href='contact.html'" style="margin-right: 10px;">
+              <div><img src="./img/icon-email.png" style="width:40px;"></div>
+              <div class="font12"><b>ส่งอีเมลล์<br>ติดต่อเรา</b></div>
+            </div>
+            <div class="ScoreGame5" onclick="location.href='openchat.html'"  style="margin-right: 10px;">
+              <div><img src="./img/icon-qrcode.png" style="width:40px;"></div>
+              <div class="font12"><b>Line<br>Open Chat</b></div>
+            </div>
+            <div class="ScoreGame5" onclick="location.href='telfriend.html'">
+              <div><img src="./img/friends.png" style="width:40px;"></div>
+              <div class="font12"><b>บอกต่อ<br>เพื่อนเรา</b></div>
+            </div>
+
+          </div>
+          <!--
+          <div class="btn-t2" onclick="location.href='intro.html'">แนะนำการใช้<br>ระบบงาน</div>
+          <div class="btn-t2" onclick="DisplayQRCode()">ชวนเพื่อนเข้าใช้งาน<br>LINE Retail Society</div>
+          -->
+        </div>
+      </div>
+    </div>
+    <div class="clr" style="height: 50px;"></div>
+  </main>
+
+  <script src="js/connect.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>
