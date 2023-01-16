@@ -8,6 +8,7 @@ $(document).ready(function () {
   sessionStorage.clear(); 
   var str = "";
   //var sLineID = "Ua6b6bf745bd9bfd01a180de1a05c23b3";
+  /*
   var sLineID = "U05e7f08306526fd6eac08442bdc40c99";
   var sLineName = "Website";
   var sLinePicture = "https://profile.line-scdn.net/0hoLlg-mNNMGNRHiaTpMdPNG1bPg4mMDYrKX8qVnIYOgYpe3QwbCp2AXVKaVN_fnMzOC16V3NMagF8";
@@ -18,12 +19,10 @@ $(document).ready(function () {
   str += '<div class="NameLine">'+ sessionStorage.getItem("LineName")+'</div>';
   $("#MyProfile").html(str);  
   Connect_DB();
-   
-  //main();
+  */
+  main();
   dbProfile = firebase.firestore().collection("CheckProfile");
   dbSellerCampaign = firebase.firestore().collection("SellerCampaign");
-  //dbttbMember = firebase.firestore().collection("ttbMember");
-  //dbttbnewsLog = firebase.firestore().collection("ttbnewsLog");
   CheckData();
 
 });
@@ -31,7 +30,7 @@ $(document).ready(function () {
 
 
 async function main() {
-  await liff.init({ liffId: "1657509542-KGPDLak7" });
+  await liff.init({ liffId: "1657509542-OMXAGR8p" });
   document.getElementById("isLoggedIn").append(liff.isLoggedIn());
   if(liff.isLoggedIn()) {
     getUserProfile();
