@@ -21,9 +21,6 @@ $(document).ready(function () {
   Connect_DB();
   */
   main();
-  dbProfile = firebase.firestore().collection("CheckProfile");
-  dbSellerCampaign = firebase.firestore().collection("SellerCampaign");
-  CheckData();
 
 });
 
@@ -60,7 +57,7 @@ function openWindow() {
   })
 }
 
-/*
+
 function Connect_DB() {
   var firebaseConfig = {
     apiKey: "AIzaSyDfTJJ425U4OY0xac6jdhtSxDeuJ-OF-lE",
@@ -73,11 +70,10 @@ function Connect_DB() {
   };
   firebase.initializeApp(firebaseConfig);
   dbProfile = firebase.firestore().collection("CheckProfile");
-  dbttbMember = firebase.firestore().collection("ttbMember");
-  dbttbnewsLog = firebase.firestore().collection("ttbnewsLog");
+  dbSellerCampaign = firebase.firestore().collection("SellerCampaign");
   CheckData();
 }
-*/
+
 
 var CheckFoundData = 0;
 function CheckData() {
