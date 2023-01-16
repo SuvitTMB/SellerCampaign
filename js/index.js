@@ -5,8 +5,8 @@ var dateString = "";
 
 $(document).ready(function () {
 
-  sessionStorage.clear(); 
-  var str = "";
+  //sessionStorage.clear(); 
+  //var str = "";
   //var sLineID = "Ua6b6bf745bd9bfd01a180de1a05c23b3";
   /*
   var sLineID = "U05e7f08306526fd6eac08442bdc40c99";
