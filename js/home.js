@@ -41,7 +41,34 @@ function CheckSeller() {
   var str1 = "";
   var str2 = "";
   var str3 = "";
-  console.log(sessionStorage.getItem("EmpID_Seller"));
+  var str11 = "";
+  var str22 = "";
+  var str33 = "";
+  str11 += '<div><div class="font13" style="margin-bottom: 5px;"><b>BALife</b></div>';
+  str11 += '<table class="table table-bordered" class="font13" style="background-color: #fff;">';
+  str11 += '<thead><tr style="text-align: center;background-color: #93a3c1;">';
+  str11 += '<th scope="col">รายการ</th><th scope="col">รายละเอียด</th><th scope="col">หน่วย</th></tr></thead><tbody>';
+  str11 += '<tr><td colspan="3" style="text-align: center; font-weight: 600; height:50px;padding-top:10px;background-color:#f1f1f1;">ไม่มีข้อมูล</td></tr>';
+  str11 += '</tbody></table>';
+  $("#BALifeSeller").html(str11);
+
+  str22 += '<div style="margin-top:30px;"><div><div class="font13" style="margin-bottom: 5px;"><b>>TNI</b></div>';
+  str22 += '<table class="table table-bordered" class="font13" style="background-color: #fff;">';
+  str22 += '<thead><tr style="text-align: center;background-color: #93a3c1;">';
+  str22 += '<th scope="col">รายการ</th><th scope="col">รายละเอียด</th><th scope="col">หน่วย</th></tr></thead><tbody>';
+  str22 += '<tr><td colspan="3" style="text-align: center; font-weight: 600; height:50px;padding-top:10px;background-color:#f1f1f1;">ไม่มีข้อมูล</td></tr>';
+  str22 += '</tbody></table></div>';
+  $("#TNISeller").html(str22);
+
+  str33 += '<div style="margin-top:30px;"><div><div class="font13" style="margin-bottom: 5px;"><b>MF</b></div>';
+  str33 += '<table class="table table-bordered" class="font13" style="background-color: #fff;">';
+  str33 += '<thead><tr style="text-align: center;background-color: #93a3c1;">';
+  str33 += '<th scope="col">รายการ</th><th scope="col">รายละเอียด</th><th scope="col">หน่วย</th></tr></thead><tbody>';
+  str33 += '<tr><td colspan="3" style="text-align: center; font-weight: 600; height:50px;padding-top:10px;background-color:#f1f1f1;">ไม่มีข้อมูล</td></tr>';
+  str33 += '</tbody></table></div>';
+  $("#MFSeller").html(str33);
+
+  //console.log(sessionStorage.getItem("EmpID_Seller"));
   dbSellerCampaign.where('EmpID','==', parseFloat(sessionStorage.getItem("EmpID_Seller") ))
   //dbSellerCampaign.where('EmpID','==', sessionStorage.getItem("EmpID_Seller") )
   .get().then((snapshot)=> {
@@ -71,7 +98,9 @@ function CheckSeller() {
       str1 += '<td style="text-align: right; font-weight: 600;">'+ numberWithCommas(doc.data().YearPoint) +'</td>';
       str1 += '<td style="text-align: center;">Point</td></tr></tbody></table>';
       str1 += '<div class="font12>" style="margin-top:-10px;">ข้อมูล ณ <font color="#f68b1f"><b>'+ xDateBALife +'</b></font></div></div></div>';
+      $("#BALifeSeller").html(str1);
     }
+
     if(doc.data().Product=="TNI") {
       console.log("TNI");
       str2 += '<div style="margin-top:30px;"><div class="font13" style="margin-bottom: 5px;"><b>TNI</b> : ตำแหน่ง '+ doc.data().EmpPosition +'</div>';
@@ -85,6 +114,7 @@ function CheckSeller() {
       str2 += '<tr><th scope="row" style="text-align: left;">รางวัลรายเดือน</th><td style="text-align: right; font-weight: 600;">'+ numberWithCommas(doc.data().TNI_Reward) +'</td>';
       str2 += '<td style="text-align: center;">บาท</td></tr></tbody></table>';
       str2 += '<div class="font12>" style="margin-top:-10px;">ข้อมูล ณ <font color="#f68b1f"><b>'+ xDateTNI +'</b></font></div><div id="A3"></div></div>';
+      $("#TNISeller").html(str2);
     }  
     if(doc.data().Product=="MF") { 
       console.log("MF");
@@ -103,11 +133,9 @@ function CheckSeller() {
       str3 += '<td style="text-align: right; font-weight: 600;">'+ numberWithCommas(doc.data().MF_Reward) +'</td>';
       str3 += '<td style="text-align: center;">บาท</td></tr>';
       str3 += '</tbody></table></div><div class="font12>" style="margin-top:-10px;">ข้อมูล ณ <font color="#f68b1f"><b>'+ xDateMF +'</b></font></div>';
+      $("#MFSeller").html(str3);
     }
     });
-    $("#BALifeSeller").html(str1);
-    $("#TNISeller").html(str2);
-    $("#MFSeller").html(str3);
     document.getElementById('loading').style.display='none';
     document.getElementById('DisplaySeller').style.display='block';
   });

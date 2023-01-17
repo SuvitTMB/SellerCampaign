@@ -1,15 +1,13 @@
 var i = 0;
 var EidProfile = "";
 var dateString = "";
-
+var xTrue = "";
 
 $(document).ready(function () {
-
-  //sessionStorage.clear(); 
-  //var str = "";
-  //var sLineID = "Ua6b6bf745bd9bfd01a180de1a05c23b3";
-  /*
-  var sLineID = "U05e7f08306526fd6eac08442bdc40c99";
+/*
+  sessionStorage.clear(); 
+  var str = "";
+  var sLineID = "Ua6b6bf745bd9bfd01a180de1a05c23b3";
   var sLineName = "Website";
   var sLinePicture = "https://profile.line-scdn.net/0hoLlg-mNNMGNRHiaTpMdPNG1bPg4mMDYrKX8qVnIYOgYpe3QwbCp2AXVKaVN_fnMzOC16V3NMagF8";
   sessionStorage.setItem("LineID", sLineID);
@@ -19,7 +17,8 @@ $(document).ready(function () {
   str += '<div class="NameLine">'+ sessionStorage.getItem("LineName")+'</div>';
   $("#MyProfile").html(str);  
   Connect_DB();
-  */
+*/
+
   main();
 
 });
@@ -71,6 +70,7 @@ function Connect_DB() {
   firebase.initializeApp(firebaseConfig);
   dbProfile = firebase.firestore().collection("CheckProfile");
   dbSellerCampaign = firebase.firestore().collection("SellerCampaign");
+  dbBAlifeMember_log = firebase.firestore().collection("BAlifeMember_log");
   CheckData();
 }
 
@@ -86,19 +86,14 @@ function CheckData() {
       if(doc.data().statusconfirm==1) {
         EidProfile = doc.id;
         sessionStorage.setItem("EmpID_Seller", doc.data().empID);
-        //sessionStorage.setItem("EmpID_Seller", 11021);
         sessionStorage.setItem("EmpName_Seller", doc.data().empName);
-        //document.getElementById('loading').style.display='none';
-        //document.getElementById('OldSurvey').style.display='block';
         CheckMember();
       } else {
-        alert("โปรดรอ");
-        //location.href = "https://liff.line.me/1655966947-KxrAqdyp";
+        location.href = "https://liff.line.me/1655966947-KxrAqdyp";
       }
     });
     if(CheckFoundData==0) {
-      alert("สมัครเข้าใช้งาน");
-      //location.href = "https://liff.line.me/1655966947-KxrAqdyp"; 
+      location.href = "https://liff.line.me/1655966947-KxrAqdyp"; 
     }
   });
 }
@@ -108,27 +103,24 @@ var EidUpdateLogin = "";
 var CountLogin = 0;
 var CheckFound = 0;
 function CheckMember() {
-        console.log(sessionStorage.getItem("EmpID_Seller")+"==="+sessionStorage.getItem("EmpName_Seller"));
+  //console.log(sessionStorage.getItem("EmpID_Seller")+"==="+sessionStorage.getItem("EmpName_Seller"));
   dbSellerCampaign.where('EmpID','==',parseFloat(sessionStorage.getItem("EmpID_Seller")))
   .limit(1)
   .get().then((snapshot)=> {
     snapshot.forEach(doc=> {
       CheckFound = 1;
+      xTrue = "สำเร็จ";
       UpdatePorfile();
-      //sessionStorage.setItem("RefID_Member", doc.id);
-      //sessionStorage.setItem("Level_Point", doc.data().Level_Point);
-      //sessionStorage.setItem("XP_Point", doc.data().XP_Point);
-      //sessionStorage.setItem("RP_Point", doc.data().RP_Point);
       document.getElementById('loading').style.display='none';
       document.getElementById('OldSurvey').style.display='block';
     });
     console.log(CheckFound);
     if(CheckFound==0) {
-      //AddNewMember();
+      xTrue = "ไม่สำเร็จ";
       document.getElementById('loading').style.display='none';
       document.getElementById('NoService').style.display='block';
-      //document.getElementById('NoService').style.display='block';
     }
+    SaveBA_Log();
   });
 }
 
@@ -141,21 +133,22 @@ function UpdatePorfile() {
 }
 
 
-/*
-function WelcomePoint() {
-  document.getElementById('id01').style.display='none';
-  document.getElementById('id02').style.display='block';
-  var str = "";
-  str += '<div><img src="'+ sessionStorage.getItem("LinePicture") +'" class="Profile-img" style="margin-top:35px;width:120px;height:120px;"></div>';
-  str += '<div class="Profile-title" style="color:#f68b1f; font-weight:600;text-align:center;">'+ sessionStorage.getItem("LineName")+'</div>';
-  str += '<div class="btn-t3" style="margin:15px auto;">คุณได้รับ <b>Welcome Point</b></div><div class="XPpoint" style="margin-top:-10px;">'+ sessionStorage.getItem("XP_Point")+' Point</div>';
-  str += '<div style="margin-top:15px;"><img src="./img/welcome.gif" style="width:100%; max-width: 200px;"></div>';
-  str += '<div class="clr"></div>';
-  str += '<div class="btn-t2" onclick="GotoWeb()" style="margin-top:15px;">เข้าสู่ <b>LINE Retail Society</b></div>';
-  str += '<div class="clr" style="height:40px;"></div>';
-  $("#DisplayWelcomePoint").html(str);  
+function SaveBA_Log() {
+  NewDate();
+  var TimeStampDate = Math.round(Date.now() / 1000);
+  dbBAlifeMember_log.add({
+    LineID : sessionStorage.getItem("LineID"),
+    LineName : sessionStorage.getItem("LineName"),
+    LinePicture : sessionStorage.getItem("LinePicture"),
+    EmpID : sessionStorage.getItem("EmpID_Seller"),
+    EmpName : sessionStorage.getItem("EmpName_Seller"),
+    PageVisit : xTrue,
+    LogDateTime : dateString,
+    LogTimeStamp : TimeStampDate
+  });
 }
-*/
+
+
 
 function DisplayQRCode() {
   document.getElementById('id03').style.display='block';
