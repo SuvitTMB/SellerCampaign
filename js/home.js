@@ -52,7 +52,7 @@ function CheckSeller() {
   str11 += '</tbody></table>';
   $("#BALifeSeller").html(str11);
 
-  str22 += '<div style="margin-top:30px;"><div><div class="font13" style="margin-bottom: 5px;"><b>>TNI</b></div>';
+  str22 += '<div style="margin-top:30px;"><div><div class="font13" style="margin-bottom: 5px;"><b>TNI</b></div>';
   str22 += '<table class="table table-bordered" class="font13" style="background-color: #fff;">';
   str22 += '<thead><tr style="text-align: center;background-color: #93a3c1;">';
   str22 += '<th scope="col">รายการ</th><th scope="col">รายละเอียด</th><th scope="col">หน่วย</th></tr></thead><tbody>';
@@ -74,8 +74,8 @@ function CheckSeller() {
   .get().then((snapshot)=> {
     snapshot.forEach(doc=> {
     if(doc.data().Product=="BALife") { 
-      console.log("BALife");
-      str1 += '<div><div class="font13" style="margin-bottom: 5px;"><b>BALife</b> : ตำแหน่ง '+ doc.data().EmpPosition +'</div>';
+      //console.log("BALife");
+      str1 += '<div><div class="font13" style="margin-bottom: 5px;"><b>BALife</b> : ข้อมูล ณ <font color="#f68b1f"><b>'+ xDateBALife +'</b></font></div>';
       str1 += '<table class="table table-bordered" class="font13" style="background-color: #fff;">';
       str1 += '<thead><tr style="text-align: center;background-color: #93a3c1;">';
       str1 += '<th scope="col">รายการ</th><th scope="col">รายละเอียด</th><th scope="col">หน่วย</th></tr></thead><tbody>';
@@ -97,13 +97,14 @@ function CheckSeller() {
       str1 += '<tr><th scope="row" style="text-align: left;">คะแนนสะสมรายปี</th>';
       str1 += '<td style="text-align: right; font-weight: 600;">'+ numberWithCommas(doc.data().YearPoint) +'</td>';
       str1 += '<td style="text-align: center;">Point</td></tr></tbody></table>';
-      str1 += '<div class="font12>" style="margin-top:-10px;">ข้อมูล ณ <font color="#f68b1f"><b>'+ xDateBALife +'</b></font></div></div></div>';
+      str1 += '</div></div>';
       $("#BALifeSeller").html(str1);
+      $("#SellerPosition").html("ตำแหน่ง "+ doc.data().EmpPosition);
     }
 
     if(doc.data().Product=="TNI") {
-      console.log("TNI");
-      str2 += '<div style="margin-top:30px;"><div class="font13" style="margin-bottom: 5px;"><b>TNI</b> : ตำแหน่ง '+ doc.data().EmpPosition +'</div>';
+      //console.log("TNI");
+      str2 += '<div style="margin-top:30px;"><div class="font13" style="margin-bottom: 5px;"><b>TNI</b> : ข้อมูล ณ <font color="#f68b1f"><b>'+ xDateTNI +'</b></font></div>';
       str2 += '<table class="table table-bordered" class="font13" style="background-color: #fff;">';
       str2 += '<thead><tr style="text-align: center;background-color: #93a3c1;">';
       str2 += '<th scope="col">รายการ</th><th scope="col">รายละเอียด</th><th scope="col">หน่วย</th></tr></thead><tbody>';
@@ -113,27 +114,30 @@ function CheckSeller() {
       str2 += '<td style="text-align: right; font-weight: 600;">'+ parseFloat(doc.data().Policy).toFixed(0) +'</td><td style="text-align: center;">ฉบับ</td></tr>';
       str2 += '<tr><th scope="row" style="text-align: left;">รางวัลรายเดือน</th><td style="text-align: right; font-weight: 600;">'+ numberWithCommas(doc.data().TNI_Reward) +'</td>';
       str2 += '<td style="text-align: center;">บาท</td></tr></tbody></table>';
-      str2 += '<div class="font12>" style="margin-top:-10px;">ข้อมูล ณ <font color="#f68b1f"><b>'+ xDateTNI +'</b></font></div><div id="A3"></div></div>';
+      str2 += '<div id="A3"></div></div>';
       $("#TNISeller").html(str2);
+      $("#SellerPosition").html("ตำแหน่ง "+ doc.data().EmpPosition);
     }  
     if(doc.data().Product=="MF") { 
-      console.log("MF");
+      //console.log("MF");
       str3 += '<div style="margin-top:30px;">';
-      str3 += '<div class="font13" style="margin-bottom: 5px;"><b>MF</b> : ตำแหน่ง '+ doc.data().EmpPosition +'</div>';
+      str3 += '<div class="font13" style="margin-bottom: 5px;"><b>MF</b> : ข้อมูล ณ <font color="#f68b1f"><b>'+ xDateMF +'</b></font></div>';
       str3 += '<table class="table table-bordered" class="font13" style="background-color: #fff;">';
       str3 += '<thead><tr style="text-align: center;background-color: #93a3c1;">';
       str3 += '<th scope="col">รายการ</th><th scope="col">รายละเอียด</th><th scope="col">หน่วย</th></tr></thead><tbody>';
       str3 += '<tr><th scope="row" style="text-align: left;">Net New Type B&C</th>';
       str3 += '<td style="text-align: right; font-weight: 600;">'+ numberWithCommas(doc.data().NetNew_TypeBandC) +'</td>';
       str3 += '<td style="text-align: center;">บาท</td></tr>';
-      str3 += '<tr><th scope="row" style="text-align: left;">Net New Type B (ที่เข้าร่วม)</th>';
+      //str3 += '<tr><th scope="row" style="text-align: left;">Net New Type B (ที่เข้าร่วม)</th>';
+      str3 += '<tr><th scope="row" style="text-align: left;">Net New Type B</th>';
       str3 += '<td style="text-align: right; font-weight: 600;">'+ numberWithCommas(doc.data().NetNew_QTypeB) +'</td>';
       str3 += '<td style="text-align: center;">บาท</td></tr>';
       str3 += '<tr><th scope="row" style="text-align: left;">รางวัลรายไตรมาส</th>';
       str3 += '<td style="text-align: right; font-weight: 600;">'+ numberWithCommas(doc.data().MF_Reward) +'</td>';
       str3 += '<td style="text-align: center;">บาท</td></tr>';
-      str3 += '</tbody></table></div><div class="font12>" style="margin-top:-10px;">ข้อมูล ณ <font color="#f68b1f"><b>'+ xDateMF +'</b></font></div>';
+      str3 += '</tbody></table></div>';
       $("#MFSeller").html(str3);
+      $("#SellerPosition").html("ตำแหน่ง "+ doc.data().EmpPosition);
     }
     });
     document.getElementById('loading').style.display='none';
